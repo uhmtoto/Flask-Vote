@@ -13,24 +13,19 @@
 
 <body>
     <div class="header">
-        <h1><i class="fas fa-vote-yea"></i>{{ vote_title }}</h1>
+        <h1><i class="fas fa-vote-yea"></i>&nbsp;{{ vote_title }}</h1>
     </div>
-
     <div class="container">
         <form method="POST" action="/candidate/register" enctype="multipart/form-data">
+            {% for type in type_list %}
+                <input type="radio" name="part" id="{{ type }}" value="{{ type }}">
+                <label for="{{ type }}">{{ type }}</label>
+            {% endfor %}
             <div class="input-group can-form">
                 <div class="input-group-prepend">
                     <span class="input-group-text">이름</span>
                 </div>
                 <input type="text" name="name" class="form-control">
-            </div>
-            <div class="input-group can-form">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">부문</span>
-                </div>
-                {% for type in type_list %}
-                    <input type="radio" name="part" value="{{ type }}">
-                {% endfor %}
             </div>
             <div class="input-group can-form">
                 <div class="input-group-prepend">
@@ -46,7 +41,7 @@
             </div>
             <div class="input-group can-form">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="image">
+                    <input type="file" class="custom-file-input" id="image" name="image">
                     <label class="custom-file-label" for="image" aria-describedby="image">사진</label>
                 </div>
             </div>    
