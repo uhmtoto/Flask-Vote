@@ -8,13 +8,12 @@ from flask import (
 from werkzeug.utils import secure_filename
 import os, datetime
 
-# Config
+# Config Start
 VOTE_TITLE = '제 1회 회장 선거'
-CANDIDATE_KEY = '1234'
+CANDIDATE_KEY = 'pw'
 PART_LIST = ['정회장', '부회장']
-# REGISTER_PERIOD[0] : Start day
-# REGISTER_PERIOD[1] : End day
 REGISTER_PERIOD = [20181101, 20181131]
+# Config End
 
 @app.route('/')
 def main():
