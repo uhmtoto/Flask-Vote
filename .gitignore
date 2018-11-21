@@ -105,3 +105,6 @@ venv.bak/
 
 # Secret key
 /vote/secretkey
+
+# Database
+/vote/app.db
