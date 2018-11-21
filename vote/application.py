@@ -24,7 +24,6 @@ def main():
     for i in range (1, count+1):
         query = db.session.query(Candidate).filter(Candidate.id.like(str(i)))
         candidate = str(query.one()).split('|')
-        print (candidate)
         candidate_list.append(candidate)
     return render_template('main.html', vote_title=VOTE_TITLE, register=reg, candidates=candidate_list)
 
