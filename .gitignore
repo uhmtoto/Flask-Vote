@@ -104,10 +104,10 @@ venv.bak/
 .mypy_cache/
 
 # Secret key
-/vote/secretkey
+vote/secretkey
 
 # Database
-/vote/app.db
+vote/app.db
 
 # Candidate image
-/candidate/img/
+candidate_img/
