@@ -5,6 +5,11 @@ body {
     font-family: 'Black Han Sans', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
 .header {
     margin: 10px auto;
 }
@@ -22,4 +27,5 @@ body {
 
 #register {
     text-align: center;
+    margin: 10px auto;
 }
