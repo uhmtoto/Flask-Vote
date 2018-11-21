@@ -1,5 +1,5 @@
-class candidate(db.Model):
-    __table_name__ = 'candidate'
+class Candidate(db.Model):
+    __table_name__ = 'Candidate'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(10), nullable=False)
     part = db.Column(db.String(50), nullable=False)
