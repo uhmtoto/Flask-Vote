@@ -18,30 +18,30 @@
     <div class="container">
         <form method="POST" action="/candidate/register" enctype="multipart/form-data">
             {% for type in type_list %}
-                <input type="radio" name="part" id="{{ type }}" value="{{ type }}">
+                <input type="radio" name="part" id="{{ type }}" value="{{ type }}"  required>
                 <label for="{{ type }}">{{ type }}</label>
             {% endfor %}
             <div class="input-group can-form">
                 <div class="input-group-prepend">
                     <span class="input-group-text">이름</span>
                 </div>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" required>
             </div>
             <div class="input-group can-form">
                 <div class="input-group-prepend">
                     <span class="input-group-text">한줄 소개</span>
                 </div>
-                <input type="text" name="phrase" class="form-control">
+                <input type="text" name="phrase" class="form-control" required>
             </div>
             <div class="input-group can-form">
                 <div class="input-group-prepend">
                     <span class="input-group-text">개인 식별 코드</span>
                 </div>
-                <input type="text" name="key" class="form-control">
+                <input type="text" name="key" class="form-control" required>
             </div>
             <div class="input-group can-form">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="image" name="image">
+                    <input type="file" class="custom-file-input" id="image" name="image" required>
                     <label class="custom-file-label" for="image" aria-describedby="image">사진</label>
                 </div>
             </div>    
