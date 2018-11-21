@@ -29,7 +29,7 @@ def register():
     part = request.form.get('part')
     phrase = request.form.get('phrase')
     if (request.form.get('key') != CANDIDATE_KEY):
-        return '개인 식별 코드를 확인하세요'
+        return '<script>alert("개인 식별 코드를 확인하세요");</script>'
     image = request.files['image']
     image_path = os.path.join('candidate_img', image.filename)
     image.save(image_path)
