@@ -19,3 +19,7 @@ body {
 .can-form {
     margin: 10px auto;
 }
+
+#register {
+    text-align: center;
+}
