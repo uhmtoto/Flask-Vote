@@ -31,13 +31,14 @@ a {
     margin: 10px auto;
 }
 
-.can-img {
-    width: auto;
-    height: auto;
-    max-width: 200px;
-    max-height: 200px;
+.can-list {
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 30px;
 }
 
-.can-card {
-    max-width: 200px;
+.can-img {
+    width: auto;
+    height: 35vh;
+    object-fit: cover;
 }

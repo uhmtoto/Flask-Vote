@@ -18,13 +18,13 @@
     </nav>
     {% if register %}
         <div id="register">
-            <a href="/candidate/register"><button type="button" class="btn btn-light">후보자 등록 기간입니다!</button></a>
+            <a href="/candidate/register"><button type="button" class="btn btn-dark">후보자 등록 기간입니다!</button></a>
         </div>
     {% endif %}
     <div class="container">
         <div class="card-deck can-list">
             {% for candidate in candidates %}
-            <div class="card can-card">
+            <div class="card ">
                 <img class="card-img-top can-img" src="{{ url_for('static', filename='./candidate_img/%s' % candidate[4]) }}" alt="Candidate Image">
                 <div class="card-body bg-light">
                     <h5 class="card-title">{{ candidate[1] }}</h5>
