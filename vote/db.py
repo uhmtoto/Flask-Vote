@@ -1,3 +1,6 @@
+from flask_sqlalchemy import SQLAlchemy
+from vote import db
+
 class Candidate(db.Model):
     __table_name__ = 'Candidate'
     id = db.Column(db.Integer, primary_key=True)
@@ -8,3 +11,5 @@ class Candidate(db.Model):
 
     def __repr__ (self):
         return f"<candidate('{self.id}', '{self.name}', '{self.part}', '{self.phrase}', '{self.image}')>"
+
+db.create_all()
