@@ -11,27 +11,27 @@
         crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg-light">
     <nav class="navbar navbar-light bg-light">
         <i class="fas fa-vote-yea"></i>
         <a class="navbar-brand" href="/">{{ vote_title }}</a>
     </nav>
     {% if register %}
         <div id="register">
-            <a href="/candidate/register"><button type="button" class="btn btn-secondary">후보자 등록 기간입니다!</button></a>
+            <a href="/candidate/register"><button type="button" class="btn btn-light">후보자 등록 기간입니다!</button></a>
         </div>
     {% endif %}
     <div class="container">
-        <div class="card-deck">
+        <div class="card-deck can-list">
             {% for candidate in candidates %}
-            <div class="card">
-                <img class="card-img-top" src="{{ candidate['img'] }}" alt="Candidate Image">
-                <div class="card-body">
-                    <h5 class="card-title">{{ candidate['name'] }}</h5>
-                    <p class="card-text">{{ candidate['phrase'] }}</p>
+            <div class="card can-card">
+                <img class="card-img-top can-img" src="{{ url_for('static', filename='./candidate_img/%s' % candidate[4]) }}" alt="Candidate Image">
+                <div class="card-body bg-light">
+                    <h5 class="card-title">{{ candidate[1] }}</h5>
+                    <p class="card-text">{{ candidate[3] }}</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{ candidate['part'] }}</small>
+                    <small class="text-muted">{{ candidate[2] }} 후보</small>
                 </div>
             </div>
             {% endfor %}

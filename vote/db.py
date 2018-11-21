@@ -10,6 +10,6 @@ class Candidate(db.Model):
     image = db.Column(db.String(100), nullable=False)
 
     def __repr__ (self):
-        return f"<candidate('{self.id}', '{self.name}', '{self.part}', '{self.phrase}', '{self.image}')>"
+        return f"{self.id}|{self.name}|{self.part}|{self.phrase}|{self.image}"
 
 db.create_all()

@@ -11,8 +11,9 @@ a {
 }
 
 .header {
-    margin: 10px auto;
+    margin: 15px auto;
 }
+
 .container {
     margin: 5%;
 }
@@ -28,4 +29,15 @@ a {
 #register {
     text-align: center;
     margin: 10px auto;
+}
+
+.can-img {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.can-card {
+    max-width: 200px;
 }
