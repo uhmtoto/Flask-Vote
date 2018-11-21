@@ -108,3 +108,6 @@ venv.bak/
 
 # Database
 /vote/app.db
+
+# Candidate image
+/candidate/img/
