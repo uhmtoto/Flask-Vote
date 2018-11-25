@@ -19,10 +19,12 @@
                     <div class="card-footer">
                         <small class="text-muted">{{ candidate[2] }} 후보</small>
                     </div>
+                    <button class="btn btn-info vote" data-name="{{ candidate[1] }}">투표 하기</button>
                 </div>
             {% endfor %}
         </div>
     </div>
+    {% include 'js.html' %}
 </body>
 
 </html>
