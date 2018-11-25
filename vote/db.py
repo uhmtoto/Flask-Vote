@@ -25,7 +25,7 @@ class Log(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_key = db.Column(db.String(7), nullable=False)
     part = db.Column(db.String(50), nullable=False)
-    value = db.Column(db.Integer, nullable)
+    value = db.Column(db.Integer, nullable=False)
 
     def __repr__ (self):
         pass
