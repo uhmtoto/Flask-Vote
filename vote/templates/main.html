@@ -1,39 +1,25 @@
-<!doctype html>
-<html>
-
-<head>
-    <title>Vote</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='./css/main.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-</head>
-
+{% include 'head.html' %}
 <body class="bg-light">
     <nav class="navbar navbar-light bg-light">
         <i class="fas fa-vote-yea"></i>
+        {% if register %}
+            <a href="/candidate/register"><button type="button" class="btn btn-dark">후보자 등록 기간입니다!</button></a>
+        {% endif %}
         <a class="navbar-brand" href="/">{{ vote_title }}</a>
     </nav>
-    {% if register %}
-        <div id="register">
-            <a href="/candidate/register"><button type="button" class="btn btn-dark">후보자 등록 기간입니다!</button></a>
-        </div>
-    {% endif %}
     <div class="container">
         <div class="card-deck can-list">
             {% for candidate in candidates %}
-            <div class="card ">
-                <img class="card-img-top can-img" src="{{ url_for('static', filename='./candidate_img/%s' % candidate[4]) }}" alt="Candidate Image">
-                <div class="card-body bg-light">
-                    <h5 class="card-title">{{ candidate[1] }}</h5>
-                    <p class="card-text">{{ candidate[3] }}</p>
+                <div class="card ">
+                    <img class="card-img-top can-img" src="{{ url_for('static', filename='./candidate_img/%s' % candidate[4]) }}" alt="Candidate Image">
+                    <div class="card-body bg-light">
+                        <h5 class="card-title">{{ candidate[1] }}</h5>
+                        <p class="card-text">{{ candidate[3] }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">{{ candidate[2] }} 후보</small>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">{{ candidate[2] }} 후보</small>
-                </div>
-            </div>
             {% endfor %}
         </div>
     </div>

@@ -15,7 +15,7 @@ a {
 }
 
 .container {
-    margin: 5%;
+    margin: 10px 5%;
 }
 
 .header {
@@ -23,11 +23,6 @@ a {
 }
 
 .can-form {
-    margin: 10px auto;
-}
-
-#register {
-    text-align: center;
     margin: 10px auto;
 }
 
