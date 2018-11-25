@@ -21,7 +21,7 @@ def main():
     count = db.session.query(Candidate).count()
     for i in range (1, count+1):
         query = db.session.query(Candidate).filter(Candidate.id.like(str(i)))
-        candidate = str(query.one()).split('|')
+        candidate = eval(str(query.one()))
         candidate_list.append(candidate)
     return render_template('main.html', vote_title=Config.VOTE_TITLE, candidates=candidate_list, register=reg, opened=opened)
 

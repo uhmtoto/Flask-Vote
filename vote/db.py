@@ -10,7 +10,7 @@ class Candidate(db.Model):
     image = db.Column(db.String(100), nullable=False)
 
     def __repr__ (self):
-        return f"{self.id}|{self.name}|{self.part}|{self.phrase}|{self.image}"
+        return f"[{self.id},'{self.name}','{self.part}','{self.phrase}','{self.image}']"
 
 class Voter(db.Model):
     __table_name__ = 'Voter'
