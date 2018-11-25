@@ -3,11 +3,14 @@ from vote.db import *
 from flask import (
     url_for,
     render_template,
-    request
+    request,
+    Response
 )
 from vote.config import *
 from werkzeug.utils import secure_filename
-import os, datetime
+import os
+import datetime
+import json
 
 @app.route('/')
 def main():
@@ -33,7 +36,32 @@ def register():
     img = request.files['image']
     img_path = os.path.join('vote/static/candidate_img', img.filename)
     img.save(img_path)
-    candidate = Candidate(name=name, part=part, phrase=phrase, image=img.filename)
-    db.session.add(candidate)
+    newCan = Candidate(
+        name = name,
+        part = part,
+        phrase = phrase,
+        image = img.filename
+    )
+    db.session.add(newCan)
     db.session.commit()
     return '<script>alert("후보자 등록을 성공했습니다.");history.go(-2);</script>'
+
+@app.route('/vote', methods=['POST'])
+def vote():
+    data = request.data.decode('utf-8')
+    data = json.loads(data)
+    u_key = data['key']
+    c_part = data['part']
+    c_name = data['value']
+    q_voter = db.session.query(Voter.query.filter(Voter.key == u_key).exists()).scalar()
+    q_log = db.session.query(Log.query.filter(Log.user_key == u_key and Log.part == c_part).exists()).scalar()
+    if (q_voter and q_log) or (not q_voter):
+        return Response(status=400)
+    newLog = Log(
+        user_key=u_key, 
+        part = c_part,
+        value = c_name
+    )
+    db.session.add(newLog)
+    db.session.commit()
+    return 'ok'

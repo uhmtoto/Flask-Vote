@@ -18,7 +18,7 @@ class Voter(db.Model):
     key = db.Column(db.String(7), nullable=False)
 
     def __repr__ (self):
-        pass
+        return f"{self.id}|{self.key}"
 
 class Log(db.Model):
     __table_name__ = 'Log'
@@ -28,6 +28,6 @@ class Log(db.Model):
     value = db.Column(db.Integer, nullable=False)
 
     def __repr__ (self):
-        pass
+        return f"{self.id}|{self.user_key}|{self.part}|{self.value}"
 
 db.create_all()
