@@ -10,4 +10,5 @@ Flask
 ## How to run on your server
 1. Install python3 packages you need to run `run.py` such as `Flask`, `SQLAlchemy`
 2. `git clone https://github.com/uhmtoto/Flask-Vote.git`
-3. `sudo python3 run.py`
+3. `sudo python3 run.py`<br>
+(because of saving images)
