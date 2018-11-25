@@ -5,15 +5,14 @@ from flask import (
     render_template,
     request
 )
+from vote.config import *
 from werkzeug.utils import secure_filename
 import os, datetime
 
-# Config Start
-VOTE_TITLE = '제 1회 회장 선거'
-CANDIDATE_KEY = 'pw'
-PART_LIST = ['정회장', '부회장']
-REGISTER_PERIOD = [20181101, 20181130]
-# Config End
+VOTE_TITLE = Config.VOTE_TITLE
+CANDIDATE_KEY = Config.CANDIDATE_KEY
+PART_LIST = Config.PART_LIST
+REGISTER_PERIOD = Config.REGISTER_PERIOD
 
 @app.route('/')
 def main():
