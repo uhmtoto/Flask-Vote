@@ -15,14 +15,15 @@ import json
 @app.route('/')
 def main():
     candidate_list = []
-    date = int(datetime.datetime.now().strftime("%Y%m%d"))
-    reg = True if Config.REGISTER_PERIOD[0] <= date and date <= Config.REGISTER_PERIOD[1] else False
+    time = int(datetime.datetime.now().strftime("%Y%m%d%H%M"))
+    reg = True if Config.REGISTER_PERIOD[0] <= time and time <= Config.REGISTER_PERIOD[1] else False
+    opened = True if Config.RESULT_OPEN <= time else False
     count = db.session.query(Candidate).count()
     for i in range (1, count+1):
         query = db.session.query(Candidate).filter(Candidate.id.like(str(i)))
         candidate = str(query.one()).split('|')
         candidate_list.append(candidate)
-    return render_template('main.html', vote_title=Config.VOTE_TITLE, register=reg, candidates=candidate_list)
+    return render_template('main.html', vote_title=Config.VOTE_TITLE, candidates=candidate_list, register=reg, opened=opened)
 
 @app.route('/candidate/register', methods=['GET', 'POST'])
 def register():
@@ -65,3 +66,7 @@ def vote():
     db.session.add(newLog)
     db.session.commit()
     return 'ok'
+
+@app.route('/dashboard')
+def dashboard():
+    return 'nop'

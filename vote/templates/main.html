@@ -5,6 +5,9 @@
         {% if register %}
             <a href="/candidate/register"><button type="button" class="btn btn-dark">후보자 등록 기간입니다!</button></a>
         {% endif %}
+        {% if opened %}
+            <a href="/dashboard"><button type="button" class="btn btn-dark">투표 결과가 공개되었습니다!</button></a>
+        {% endif %}
         <a class="navbar-brand" href="/">{{ vote_title }}</a>
     </nav>
     <div class="container">
