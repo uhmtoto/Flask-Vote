@@ -11,11 +11,13 @@ from werkzeug.utils import secure_filename
 import os
 import datetime
 import json
+import ast
+
+time = int(datetime.datetime.now().strftime("%Y%m%d%H%M"))
 
 @app.route('/')
 def main():
     candidate_list = []
-    time = int(datetime.datetime.now().strftime("%Y%m%d%H%M"))
     reg = True if Config.REGISTER_PERIOD[0] <= time and time <= Config.REGISTER_PERIOD[1] else False
     opened = True if Config.RESULT_OPEN <= time else False
     count = db.session.query(Candidate).count()
@@ -69,4 +71,24 @@ def vote():
 
 @app.route('/dashboard')
 def dashboard():
-    return 'nop'
+    if (time < Config.RESULT_OPEN):
+        return '<script>alert(\'아직 발표 시간이 되지 않았습니다. 조금만 기다려주세요.\');history.go(-1);</script>'
+
+    # temp
+    rev = ''
+    for part in Config.PART_LIST:
+        cand_list = db.session.query(Candidate).filter(Candidate.part == part).all()
+        cand_list = ast.literal_eval(str(cand_list))
+        name_list = []
+        cnt_list = []
+        for cand in cand_list:
+            name_list.append(cand[1])
+        for name in name_list:
+            cnt = db.session.query(Log).filter(Log.value == name).count()
+            cnt_list.append(cnt)
+        
+        # temp
+        winner = '우승자 : %s (%d표)' % (name_list[cnt_list.index(max(cnt_list))], max(cnt_list))
+        rev = rev + '<h1>' + part + '</h1>' +  winner + '<br><br>'
+    return rev
+        
