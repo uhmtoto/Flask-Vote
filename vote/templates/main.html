@@ -10,7 +10,7 @@
     <div class="container">
         <div class="card-deck can-list">
             {% for candidate in candidates %}
-                <div class="card ">
+                <div class="card">
                     <img class="card-img-top can-img" src="{{ url_for('static', filename='./candidate_img/%s' % candidate[4]) }}" alt="Candidate Image">
                     <div class="card-body bg-light">
                         <h5 class="card-title">{{ candidate[1] }}</h5>
