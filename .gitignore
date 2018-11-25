@@ -111,3 +111,6 @@ vote/app.db
 
 # Candidate image
 candidate_img/
+
+# DSStore
+.DS_Store
